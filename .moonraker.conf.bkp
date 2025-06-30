@@ -1,0 +1,45 @@
+[server]
+host = 0.0.0.0
+port = 7126
+klippy_uds_address = /home/raspberry/printer_2_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	192.168.0.0/16
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager mainsail]
+path = /home/raspberry/mainsail
+repo = mainsail-crew/mainsail
+channel = stable
+type = web
+
+[update_manager mainsail-config]
+managed_services = klipper
+origin = https://github.com/mainsail-crew/mainsail-config.git
+path = /home/raspberry/mainsail-config
+primary_branch = master
+type = git_repo
+
+[update_manager moonraker-telegram-bot]
+install_script = scripts/install.sh
+requirements = scripts/requirements.txt
+env = /home/raspberry/moonraker-telegram-bot-env/bin/python
+origin = https://github.com/nlef/moonraker-telegram-bot.git
+path = /home/raspberry/moonraker-telegram-bot
+type = git_repo
+
